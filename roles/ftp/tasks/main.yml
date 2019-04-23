@@ -1,0 +1,11 @@
+---
+
+- name: install ftp
+  apt: 
+    name: vsftpd
+    update_cache: yes
+
+- name: start ftp
+  service: 
+    name: vsftpd
+    state: restarted

@@ -1,0 +1,28 @@
+---
+
+- name: Install and start mysql
+  hosts: db
+  remote_user: ludel
+  become: true
+  roles:
+    - mysql
+ 
+
+- name: Install and start ftp
+  hosts: web
+  remote_user: ludel
+  become: true
+  roles:
+    - ftp
+ 
+
+- name: Install and start wordpress
+  hosts: web
+  remote_user: ludel
+  become: true
+  roles:
+    - php
+    - apache
+    - wordpress
+
+

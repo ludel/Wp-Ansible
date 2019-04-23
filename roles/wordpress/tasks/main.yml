@@ -1,0 +1,22 @@
+---
+
+- name: download wp
+  get_url:
+    url: https://fr.wordpress.org/wordpress-latest-fr_FR.zip
+    dest: /tmp/wordpress-latest-fr_FR.zip
+
+- name: install unzip
+  apt: 
+    name: zip
+    update_cache: yes
+
+- name: unzip wp
+  unarchive:
+    src: /tmp/wordpress-latest-fr_FR.zip
+    dest: /var/www/html
+    remote_src: yes
+
+- name: start apache
+  service: 
+    name: apache2
+    state: restarted

@@ -1,0 +1,35 @@
+---
+
+- name: install MySql
+  apt: 
+    name: mysql-server
+    update_cache: yes
+
+- name: import mysql conf
+  copy:
+    src: ./files/mysqld.cnf
+    dest: /etc/mysql/mysql.conf.d/mysqld.cnf
+
+- name: install python mysql 
+  apt:
+    name: python-mysqldb
+
+- name: start MySql
+  service: 
+    name: mysql
+    state: restarted
+
+- name: create db user
+  mysql_user:
+    name: wp-tp
+    password: wp-tp-pwd
+    priv: '*.*:ALL'
+    state: present
+    host: '%'
+
+- name: Create a new database 
+  mysql_db:
+    name: wordpress
+    state: present
+
+

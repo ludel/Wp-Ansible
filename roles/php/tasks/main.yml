@@ -1,0 +1,16 @@
+---
+
+- name: install php
+  apt: 
+    name: php
+    update_cache: yes
+
+- name: install php apache mode
+  apt: 
+    name: libapache2-mod-php
+    update_cache: yes
+
+- name: install php my sql
+  apt: 
+    name: php-mysql
+    update_cache: yes
